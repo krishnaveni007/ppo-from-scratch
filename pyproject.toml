@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppo-from-scratch"
+version = "0.1.0"
+description = "Single-file PPO implementations following Huang et al.'s 37 implementation details blog post."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Krishnaveni U" }]
+keywords = ["reinforcement-learning", "ppo", "pytorch", "deep-learning"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "gymnasium>=0.29.0",
+    "stable-baselines3>=2.0.0",
+    "tensorboard>=2.13.0",
+]
+
+[project.optional-dependencies]
+atari = ["gymnasium[atari,accept-rom-license]>=0.29.0", "opencv-python>=4.7.0"]
+mujoco = ["gymnasium[mujoco]>=0.29.0"]
+tracking = ["wandb>=0.15.0", "moviepy>=1.0.3"]
+dev = ["pytest>=7.0.0", "pytest-cov>=4.0.0", "ruff>=0.1.0"]
+all = [
+    "gymnasium[atari,accept-rom-license,mujoco,classic-control]>=0.29.0",
+    "opencv-python>=4.7.0",
+    "wandb>=0.15.0",
+    "moviepy>=1.0.3",
+    "pytest>=7.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/krishnaveni007/ppo-from-scratch"
+Reference = "https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/"
+
+[tool.setuptools.packages.find]
+include = ["ppo*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"

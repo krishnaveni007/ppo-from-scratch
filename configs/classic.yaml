@@ -1,0 +1,30 @@
+# PPO hyperparameters for classic control envs (CartPole, Acrobot, MountainCar)
+# Source: openai/baselines defaults
+
+env_id: CartPole-v1
+total_timesteps: 500_000
+
+# Vectorized architecture [D-1]
+num_envs: 4
+num_steps: 128
+
+# Optimizer [D-3], [D-4]
+learning_rate: 2.5e-4
+anneal_lr: true
+
+# Discount and GAE [D-5]
+gamma: 0.99
+gae_lambda: 0.95
+
+# Update [D-6]
+num_minibatches: 4
+update_epochs: 4
+
+# Loss / clipping [D-7] through [D-11]
+norm_adv: true
+clip_coef: 0.2
+clip_vloss: true
+ent_coef: 0.01
+vf_coef: 0.5
+max_grad_norm: 0.5
+target_kl: null  # disabled by default; set to e.g. 0.015 to enable auxiliary early stop

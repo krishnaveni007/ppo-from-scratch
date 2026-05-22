@@ -1,0 +1,26 @@
+# PPO hyperparameters for Atari (Breakout, Pong, BeamRider, ...)
+# Source: openai/baselines/ppo2/defaults.py atari()
+
+env_id: BreakoutNoFrameskip-v4
+total_timesteps: 10_000_000
+
+# Paper uses 8 actors
+num_envs: 8
+num_steps: 128
+
+learning_rate: 2.5e-4
+anneal_lr: true
+
+gamma: 0.99
+gae_lambda: 0.95
+
+num_minibatches: 4
+update_epochs: 4
+
+norm_adv: true
+clip_coef: 0.1     # smaller than the 0.2 default for Atari
+clip_vloss: true
+ent_coef: 0.01
+vf_coef: 0.5
+max_grad_norm: 0.5
+target_kl: null
