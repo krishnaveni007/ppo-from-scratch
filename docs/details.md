@@ -129,7 +129,7 @@ The pixel values are `uint8` in `[0, 255]`. We divide by 255 inside the network'
 
 Skipping the divide-by-255 step causes the very first policy update to produce a huge KL divergence because the orthogonal init assumes inputs around unit norm.
 
-## Why this matters for your work
+## Why this matters in adversarial RL?
 
 If you're doing adversarial RL or studying alignment in RL agents, the implementation details matter doubly:
 
